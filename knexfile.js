@@ -8,7 +8,10 @@ module.exports = {
 
   development: {
     client: 'postgresql',
-    connection: 'postgres://localhost/budget_lingo_db'
+    connection: 'postgres://localhost/budget_lingo_db',
+    seeds: {
+      directory: './data/seeds'
+    }
   },
 
   staging: {
