@@ -27,8 +27,11 @@ router.post('/', (req, res, next) => {
       .catch(err=>next(err))
 })
 
+router.options('/:id', cors())
+
 router.put('/:id', (req, res, next) => {
   res.set('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', '*');
   knex('users')
     .where({ id: req.params.id })
     .update({totalMoney:req.body.totalMoney})
