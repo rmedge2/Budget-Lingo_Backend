@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 const knex = require('../db')
+const cors=require('cors')
+
+
+// router.options('/', cors())
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -10,7 +14,10 @@ router.get('/', function (req, res, next) {
         .then(logs => res.json(logs))
         .catch(err => next(err))
 });
-router.post('/', (req, res, next) => {
+
+router.options('/', cors())
+
+router.post('/', function(req, res, next) {
     res.set('Access-Control-Allow-Origin', '*');
     const { userId, name, amount, time } = req.body;
     console.log(req.body)
