@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var logsRouter = require('./routes/logs');
 
 var app = express();
+const cors=require('cors')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +29,10 @@ app.use('/logs', logsRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+app.use(cors({
+  origin: 'http://localhost:3001/'
+}));
 
 // error handler
 app.use(function(err, req, res, next) {

@@ -3,13 +3,15 @@ var router = express.Router();
 const knex = require('../db')
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
+    res.set('Access-Control-Allow-Origin', '*');
     knex('logs')
         .select('*')
         .then(logs => res.json(logs))
         .catch(err => next(err))
 });
 router.post('/', (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     const { userId, name, amount, time } = req.body;
     console.log(req.body)
     knex('logs')
