@@ -3,8 +3,8 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-    return knex.schema.alterTable('logs', table => {
-        table.string('expenseCategory');
+    return knex.schema.alterTable('users', table => {
+        table.bigInteger('totalMoney');
     })
 };
 
@@ -13,7 +13,7 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-    return knex.schema.table('logs', table => {
-        table.dropColumn('expenseCategory');
+    return knex.schema.table('users', table => {
+        table.dropColumn('totalMoney');
       })
 };
