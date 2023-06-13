@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
         .catch(err => next(err))
 });
 
-router.options('/', cors())
+router.options('/*', cors())
 
 router.post('/', (req, res, next) => {
   res.set('Access-Control-Allow-Origin', '*');
