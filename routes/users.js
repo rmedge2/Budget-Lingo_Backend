@@ -26,4 +26,17 @@ router.post('/', (req, res, next) => {
       .then(user => res.json(user))
       .catch(err=>next(err))
 })
+
+router.put('/:id', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  knex('users')
+    .where({ id: req.params.id })
+    .update({totalMoney:req.body.totalMoney})
+    .returning('*')
+    .then(user => res.json(user))
+    .catch(err=>next(err))
+})
+
+
+
 module.exports = router;
