@@ -19,13 +19,14 @@ router.options('/', cors())
 
 router.post('/', function(req, res, next) {
     res.set('Access-Control-Allow-Origin', '*');
-    const { userId, name, amount, time } = req.body;
+    const { userId, name, amount, expenseCategory, time } = req.body;
     console.log(req.body)
     knex('logs')
         .insert({
             userId,
             name,
             amount,
+            expenseCategory,
             time
         })
         .returning('*')
